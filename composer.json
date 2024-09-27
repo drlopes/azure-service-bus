@@ -1,0 +1,17 @@
+{
+    "name": "drlopes/azure-service-bus",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Drlopes\\AzureServiceBus\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniel Lopes",
+            "email": "dalopes@id-logistics.com"
+        }
+    ],
+    "require": {}
+}
