@@ -4,25 +4,14 @@ namespace Drlopes\AzureServiceBus;
 
 class ServiceBus
 {
+    private static string $pythonExecutable = 'python';
+
     public static function fetch(bool $associative = true) : string|array
     {
-        // check if the executable file exists in the ./bin/executable folder. if the folder isn't empty, get the first file in the folder
-        $files = glob(__DIR__ . '/../bin/executable/*');
-
-        if (empty($files)) {
-            throw new \Exception('No executable found');
-        }
-
-        // get the first file in the folder
-        $executable = $files[0];
-
-        // get the file name without the full path
-        $executable = basename($executable);
-
         try {
             return $associative
-                ? json_decode(shell_exec(__DIR__ . "/../bin/executable/{$executable}"), true)
-                : shell_exec(__DIR__ . "/../bin/executable/{$executable}");
+                ? json_decode(shell_exec(self::$pythonExecutable . ' ' . __DIR__ . "/../bin/service-bus.py"), true)
+                : shell_exec(self::$pythonExecutable . ' ' . __DIR__ . "/../bin/service-bus.py");
         } catch (\Throwable $th) {
             throw new \Exception($th->getMessage());
         }
