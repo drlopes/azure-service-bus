@@ -21,7 +21,9 @@ pip install pyinstaller
 
 4. Create the executable on the bin folder:
 ```bash
-python -m PyInstaller ./vendor/drlopes/azure-service-bus/bin/service-bus.py --onefile --distpath ./bin/executable
+cd vendor/drlopes/azure-service-bus/bin
+
+python -m PyInstaller service-bus.py --onefile --distpath ./bin/executable --name service-bus
 ```
 
 5. Import the ServiceBus class and call the fetch method:

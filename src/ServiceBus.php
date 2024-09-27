@@ -21,8 +21,8 @@ class ServiceBus
 
         try {
             return $associative
-                ? json_decode(shell_exec(".\bin\\executable\\$executable"))
-                : shell_exec(".\bin\\executable\\$executable");
+                ? json_decode(shell_exec(__DIR__ . "/../bin/executable/{$executable}"), true)
+                : shell_exec(__DIR__ . "/../bin/executable/{$executable}");
         } catch (\Throwable $th) {
             throw new \Exception($th->getMessage());
         }
